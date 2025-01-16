@@ -1,0 +1,30 @@
+plugins {
+    id 'java'
+}
+
+group = 'ru.arslanov'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'commons-cli:commons-cli:1.9.0'
+}
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'ru.arslanov.filefilter.FileFilterApplication'
+        )
+    }
+
+    duplicatesStrategy(DuplicatesStrategy.EXCLUDE)
+
+    from(configurations.runtimeClasspath.files.collect { zipTree(it) })
+}
+
+test {
+    useJUnitPlatform()
+}

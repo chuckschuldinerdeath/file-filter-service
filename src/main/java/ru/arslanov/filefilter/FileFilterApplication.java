@@ -71,5 +71,6 @@ public class FileFilterApplication {
         } catch (ParseException e) {
             new HelpFormatter().printHelp("Доступные опции:", options);
         }
+        System.out.println();
     }
 }
